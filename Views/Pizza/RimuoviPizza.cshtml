@@ -1,0 +1,14 @@
+﻿@model Pizza;
+
+<form asp-controller="Pizza" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+	@Html.AntiForgeryToken()
+	<div class="d-flex align-items-center justify-content-center mt-5">
+		<p class="text-danger me-5">Stai per eliminare la pizza @Model.Name? </br> Vuoi continuare? </br></p>
+		<button type="submit" class="btn btn-danger btn-sm d-block">
+			Elimina Pizza
+		</button>
+	</div>
+	<div class="d-flex justify-content-center mt-5">
+		<a href="@Url.Action("Index", "Pizza")" style="width:150px" class="btn btn-outline-info">Torna alle pizze</a>
+	</div>
+</form>

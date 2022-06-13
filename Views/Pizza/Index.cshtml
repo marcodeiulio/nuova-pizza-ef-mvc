@@ -1,0 +1,66 @@
+﻿@{
+	Layout = null;
+	ViewData["Title"] = "Home Page";
+}
+
+@model la_mia_pizzeria_static.Models.PizzaContext
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+</head>
+<body>
+	<div class="container mt-3">
+		<main role="main" class="pb-3">
+			<div class="text-center">
+				<h1 class="display-2">La Vesuviana</h1>
+				<h2 class="display-4 pb-5">Le Pizze, Quelle Bone</h2>
+				<div class="text-end my-3">
+					<a href="@Url.Action("CreaNuovaPizza", "Pizza")" class="btn btn-outline-primary"><h6>Aggiungi la tua creatura</h6></a>
+				</div>
+				<table class="table">
+				  <thead>
+					<tr>
+					  <th scope="col">Nome</th>
+					  <th scope="col">Ingredienti</th>
+					  <th scope="col">Prezzo</th>
+					  <th scope="col">Ve' che bellezza</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					  @{
+							foreach (var item in Model.Pizzas)
+							{
+								<tr>
+								<th scope="row">
+									<h3><a class="link-success" href="@Url.Action("Show", "Pizza", @item)">@item.Name</a></h3>
+									<div class="my-3">
+										<a class="btn-info btn d-inline" href="@Url.Action("AggiornaPizza", "Pizza", @item)">Aggiorna Pizza</a>
+									</div>
+									<div>
+										<a class="btn-danger btn d-inline" href="@Url.Action("RimuoviPizza", "Pizza", (Pizza)@item)">Cancella Pizza</a>
+									</div>
+
+								</th>
+								<td><h5>@item.Description</h5></td>
+								<td><h5>€@item.Price</h5></td>
+								<td><img src="@item.Photo"></td>
+								</tr>
+							}
+						}
+				  </tbody>
+				</table>
+			</div>
+		</main>
+	</div>
+
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

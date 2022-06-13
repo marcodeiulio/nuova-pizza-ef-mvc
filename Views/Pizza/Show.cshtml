@@ -1,0 +1,31 @@
+﻿@model la_mia_pizzeria_static.Models.Pizza
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"]</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
+</head>
+<body>
+	<div class="container mt-3">
+		<main role="main" class="pb-3 d-flex justify-content-center">
+			<div class="card text-center" style="width: 18rem;">
+			  <img src="/@Model.Photo"" class="card-img-top" alt="@Model.Name">
+			  <div class="card-body">
+				<h5 class="card-title">@Model.Name</h5>
+				<p class="card-text">@Model.Description</p>
+				<h6 class="card-title">€@Model.Price</h5>
+				<a href="@Url.Action("AggiornaPizza", "Pizza", @Model)" class="btn btn-info">Aggiorna Pizza</a>
+				<a href="@Url.Action("RimuoviPizza", "Pizza", @Model)" class="btn btn-danger my-2">Cancella Pizza</a>
+				<a href="@Url.Action("Index", "Pizza")" class="btn btn-outline-success"><h6>Torna alle pizze</h6></a>
+			  </div>
+			</div>
+		</main>
+	</div>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
